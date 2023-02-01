@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+.ChatBox {
+    height: 108vw;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.ChatUserInfo {
+    background: #a9bdce;
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.ChatUserInfo > label {
+    font-size: 14px;
+    margin-right: 1rem;
+}
+
+.ChatUserInfo > input {
+    border-radius: 5px;
+    border: none;
+    height: 100%
+}
+
+.ChatTextBox {
+    flex: 12;
+    background: #b2c7d9;
+    overflow-y: scroll;
+}
+
+.ChatInputBox {
+    flex: 2;
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+}
+
+.ChatInputBox > span {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.3rem;
+    width: 100%;
+}
+
+.chatInput {
+    font-size: 7px;
+    height: 100%;
+    flex: 8;
+    border: none;
+}
+
+.ChatInputBox > span > button {
+    flex : 2;
+    background: #ffeb33;
+    border: none;
+    height: 100%;
+    border-radius: 3px;
+}
+
+.chatting_list > li{
+    width: 90%;
+    padding: 0.3rem;
+    display : flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin-top: 0.5rem;
+}
+
+.userProfile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.userProfile .userId {
+    font-size: 10px;
+    margin-bottom: 0.3rem;
+}
+.userProfile > img {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
+}
+
+.message{
+    border-radius: 5px;
+    padding : 0.5rem;
+    font-size: 12px;
+    margin: 0 5px;
+    display: flex;
+    flex: 7;
+}
+.time {
+    font-size: 10px;
+    margin: 0 5px;
+}
+
+.sent{
+    flex-direction: row-reverse;
+    float: right;
+}
+.sent .message{
+    background: #ffeb33;
+}
+
+.received .message {
+    background: #ffffff;
+}
+
+.ChatButton{
+    position: fixed;
+    bottom: 61px;
+    right: 10%;
+    width: 84px;
+    height: 79px;
+    font-size: 40px;
+    border-radius: 50%;
+}
+
+.chatListBox{
+    padding: 5px;
+    width: 100%;
+    height: 108vw;
+}
+.chatInfo{
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    height: 70px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+.chatInfo > img {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
+}
+
+.chatListMsgs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 15;
+    padding: 10px;
+    font-size: 0.8rem;
+    height: 100%;
+}
+.chatListMsgs > span {
+    width: 100%;
+    text-align: left;
+}
+.chatListTime{
+    font-size: 0.5rem;
+    height: 100%;
+    width: 10%;
+    margin-top: 15px;
+}
+
+.ChatImg{
+    position: absolute;
+    right: 20px;
+    font-size: 30px;
+    top: 78px;
+    cursor: pointer;
+}

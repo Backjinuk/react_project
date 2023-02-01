@@ -1,0 +1,168 @@
+.addBlog {
+    display: flex;
+    justify-content: flex-end;
+}
+.addBlogBtn{
+    margin-right: 127px;
+}
+
+.blogList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.blog {
+    width: 560px;
+}
+
+.blogActive{
+    width: 58%;
+    height: 100%;
+}
+
+.card-top {
+    display: flex;
+    border: 1px solid;
+    height: 42px;
+    border-radius: 5px 5px 0 0;
+}
+
+.card-menu {
+    position: absolute;
+    right: 5px;
+    font-size: 1.7rem;
+    cursor: pointer;
+    top: -4px;
+}
+
+.userImg {
+    border: 1px solid black;
+    width: 10%;
+}
+
+.userInfo {
+    border: 1px solid red;
+    width: 45%;
+}
+
+.Title {
+    border: 1px solid blue;
+    width: 45%;
+}
+
+.ItemBox {
+    display: flex;
+    font-size: 1.8rem;
+    padding: 5px;
+}
+
+.ml-8 {
+    margin-left: 8px;
+}
+
+.CommentList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px;
+}
+
+.CommentListActive{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px;
+    height: 100%;
+}
+
+.comment {
+    display: flex;
+}
+
+.more {
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    position: absolute;
+    right: 1px;
+    height: 4%;
+}
+
+.addCommentBox {
+    display: flex;
+}
+
+.addCommentText {
+    width: 100%;
+}
+
+.addCommentInput {
+    padding: 0;
+    width: 90%;
+    border: none;
+}
+
+.addCommentBtn {
+    border: none;
+    background-color: #ffffff00;
+    font-size: 2rem;
+    margin-bottom: 9px;
+}
+.pidMig{
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+}
+.carousel-inner{
+    height: 100%;
+}
+.carousel{
+    height: 100%;
+}
+
+.like{
+    border: 0;
+    background-color: rgba(255, 255, 255, 0);
+}
+.chat{
+    border: 0;
+    background-color: rgba(255, 255, 255, 0);
+}
+.LikeCount{
+    display: flex;
+    margin-left: 5px;
+    font-size: 1.2rem;
+}
+.commentItemBox{
+    display: flex;
+    margin-left: 20px;
+}
+.updateCommentBox{
+    z-index: 3;
+    margin-bottom: 10px;
+    display: flex;
+    height: 51px;
+    width: 518px;
+    margin-top: 10px;
+}
+.updateCommentText{
+    height: 30px;
+    margin-top: 10px;
+    padding: 0;
+    width: 100%;
+}
+
+.updateCommentInput{
+    margin-top: 3px;
+    border: 0;
+}
+.updateCommentBtn{
+    width: 11%;
+    margin-top: 13px;
+    font-size: 0.7rem;
+    position: absolute;
+    right: 7px;
+    height: 37px;
+}

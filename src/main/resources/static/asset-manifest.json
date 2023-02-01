@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e6faa2ac.css",
+    "main.js": "/static/js/main.e5f8febe.js",
+    "static/js/787.223550ad.chunk.js": "/static/js/787.223550ad.chunk.js",
+    "static/media/77fb2f41-3082-4aa9-af57-7e569b4c8d2eimg.jpg": "/static/media/77fb2f41-3082-4aa9-af57-7e569b4c8d2eimg.e96c08f21214f62cd963.jpg",
+    "static/media/04f42273-0088-4af7-8701-c4a7eb854f3fpng-transparent-pepe-the-frog-know-your-meme-sticker-internet-meme-frog-leaf-animals-text.png": "/static/media/04f42273-0088-4af7-8701-c4a7eb854f3fpng-transparent-pepe-the-frog-know-your-meme-sticker-internet-meme-frog-leaf-animals-text.b4914f14f5799f203321.png",
+    "index.html": "/index.html",
+    "main.e6faa2ac.css.map": "/static/css/main.e6faa2ac.css.map",
+    "main.e5f8febe.js.map": "/static/js/main.e5f8febe.js.map",
+    "787.223550ad.chunk.js.map": "/static/js/787.223550ad.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6faa2ac.css",
+    "static/js/main.e5f8febe.js"
+  ]
+}

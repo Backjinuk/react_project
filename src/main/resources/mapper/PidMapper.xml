@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.react_project.pid.PidMapper">
+
+    <resultMap id="PidMapper" type="pid">
+        <result property="pidNum" column="pid_num" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="pidTitle" column="pid_title" jdbcType="VARCHAR"/>
+        <result property="pidTag" column="pid_tag" jdbcType="VARCHAR"/>
+        <result property="likeCount" column="like_count" jdbcType="INTEGER"/>
+        <result property="likeCheck" column="like_check" jdbcType="VARCHAR"/>
+        <result property="regDate" column="reg_date" jdbcType="DATE"/>
+    </resultMap>
+
+    <resultMap id="FileMapper" type="file">
+        <result property="fileNum" column="file_num" jdbcType="INTEGER"/>
+        <result property="boardNum" column="board_num" jdbcType="INTEGER"/>
+        <result property="fileName" column="file_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="CommentMapper" type="comment">
+        <result property="commentNum" column="comment_num" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="commentText" column="comment_text" jdbcType="VARCHAR"/>
+        <result property="boardNum" column="board_num" jdbcType="INTEGER"/>
+        <result property="likeCount" column="like_count" jdbcType="INTEGER"/>
+        <result property="regDate" column="reg_date" jdbcType="DATE"/>
+    </resultMap>
+
+    <resultMap id="LikeMapper" type="like">
+        <result property="likeNum" column="like_num" jdbcType="INTEGER"/>
+        <result property="userId" column="user_Id" jdbcType="VARCHAR"/>
+        <result property="boardNum" column="board_num" jdbcType="INTEGER"/>
+        <result property="likeCheck" column="like_check" jdbcType="VARCHAR"/>
+        <result property="boardCategory" column="board_category" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+    <insert id="addPid" parameterType="pid">
+        INSERT INTO
+        pid (pid_num,user_id,pid_title,REG_DATE)
+        values (pid_sqc.nextval
+        ,#{userId}
+        ,#{pidTitle}
+        ,SYSDATE
+        )
+        <selectKey keyProperty="pidNum" resultType="int" order="AFTER">
+            SELECT pid_sqc.CURRVAL FROM DUAL
+        </selectKey>
+    </insert>
+
+    <select id="getPidList" parameterType="String" resultMap="PidMapper">
+        SELECT *
+        FROM PID,
+             (SELECT *
+              FROM LIKES
+              WHERE user_id = #{userId}) li
+        WHERE pid_num = li.BOARD_NUM (+)
+        ORDER BY pid_num DESC
+    </select>
+
+    <update id="updatePid" parameterType="pid">
+        UPDATE pid
+        <set>
+            pid_title = #{pidTitle}
+        </set>
+        WHERE pid_num = #{pidNum}
+    </update>
+
+    <delete id="deletePid" parameterType="int">
+        DELETE PID
+        WHERE pid_num = #{pidNum}
+    </delete>
+
+    <delete id="updateFile" parameterType="int">
+        DELETE files
+        WHERE file_num = #{fileNum}
+    </delete>
+
+    <update id="updatePidLike" parameterType="map">
+        UPDATE pid
+        <set>
+            <if test='likeCategory == "1" '>
+                like_count = like_count + 1
+            </if>
+            <if test='likeCategory == "2" '>
+                like_count = like_count - 1
+            </if>
+        </set>
+        WHERE pid_num = #{boardNum}
+    </update>
+
+    <delete id="deleteLike" parameterType="int">
+        DELETE LIKES
+        WHERE BOARD_NUM = #{pidNum}
+    </delete>
+
+    <select id="getFileList" parameterType="int" resultMap="FileMapper">
+        SELECT *
+        FROM files
+        WHERE board_num = #{pidNum}
+    </select>
+
+    <select id="getLikeCheck" parameterType="like" resultType="String">
+        select like_check
+        FROM LIKES
+        WHERE board_num = #{boardNum}
+          AND user_id = #{userId}
+          AND board_category = #{boardCategory}
+    </select>
+
+    <insert id="addLike" parameterType="like">
+        INSERT INTO likes(like_num, user_id, board_num, like_check, board_category)
+        VALUES ( LIKECOUNT_SQC.nextval
+               , #{userId}
+               , #{boardNum}
+               , #{likeCheck}
+               , #{boardCategory})
+    </insert>
+
+    <update id="updateLike" parameterType="like">
+        UPDATE likes
+        <set>
+            <if test='likeCheck == "n" '>
+                like_check = 'y'
+            </if>
+            <if test='likeCheck == "y" '>
+                like_check = 'n'
+            </if>
+        </set>
+        WHERE board_num = #{boardNum}
+        AND user_id = #{userId}
+    </update>
+
+
+    <insert id="uploadFile" parameterType="map">
+        INSERT INTO files(file_num, board_num, file_name)
+        VALUES (files_sqc.NEXTVAL,
+                #{boardNum},
+                #{fileName})
+    </insert>
+
+
+    <insert id="addComment" parameterType="comment">
+        INSERT INTO
+        comments(COMMENT_NUM, USER_ID, COMMENT_TEXT, REG_DATE, BOARD_NUM)
+        VALUES(COMMENTS_SQC.NEXTVAL
+            ,#{userId}
+            ,#{commentText}
+            ,SYSDATE
+            ,#{boardNum} )
+        <selectKey resultType="int" keyProperty="commentNum" order="AFTER">
+            SELECT comments_sqc.currval from DUAL
+        </selectKey>
+    </insert>
+
+    <update id="updateComment" parameterType="comment">
+        UPDATE comments
+        <set>
+            comment_text = #{commentText}
+        </set>
+        WHERE comment_num = #{commentNum}
+    </update>
+
+    <delete id="deleteComment" parameterType="map">
+        DELETE COMMENTS
+        <if test="deleteCategory == 1">
+            WHERE board_num = #{boardNum}
+        </if>
+        <if test="deleteCategory == 2">
+            WHERE comment_num = #{boardNum}
+        </if>
+    </delete>
+
+    <select id="getCommentList" parameterType="int" resultMap="CommentMapper">
+        SELECT *
+        FROM COMMENTS
+        WHERE board_num = #{pidNum}
+        ORDER BY comment_num DESC
+    </select>
+
+
+</mapper>

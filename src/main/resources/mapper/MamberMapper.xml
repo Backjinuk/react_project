@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.react_project.member.MemberMapper">
+
+    <resultMap id="MemberMapper" type="Member">
+        <result property="id"           column="id"             jdbcType="VARCHAR" />
+        <result property="password"     column="password"       jdbcType="VARCHAR" />
+        <result property="phone"        column="phone"          jdbcType="VARCHAR" />
+        <result property="emile"        column="emile"          jdbcType="VARCHAR" />
+        <result property="gender"       column="gender"         jdbcType="VARCHAR" />
+    </resultMap>
+
+
+    <insert id="addMember" parameterType="Member">
+        insert into
+            member ( id,password,phone,emile)
+        VALUES (#{id},
+                #{password},
+                #{phone},
+                #{emile} )
+    </insert>
+
+    <select id="SearchMember" parameterType="Member" resultMap="MemberMapper">
+        SELECT *
+        FROM member
+        where id = #{id}
+    </select>
+
+    <select id="getLoginCheck" parameterType="Member" resultMap="MemberMapper">
+        SELECT *
+        FROM MEMBER
+        WHERE  id = #{id}
+            AND password =#{password}
+    </select>
+
+
+</mapper>
