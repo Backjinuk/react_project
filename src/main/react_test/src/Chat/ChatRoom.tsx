@@ -20,12 +20,6 @@ export default function ChatRoom() {
             // @ts-ignore
             var nUserId = document.getElementById("nickName").value;
 
-            var file : string = data.file;
-
-            var str = file.split("/");
-
-            console.log(str);
-
             const li = document.createElement("li");
             if (data.userId[0]) {
                 li.classList.add((nUserId == data.userId ? "sent" : "received"));
